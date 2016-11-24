@@ -14,6 +14,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
+    assert_select '.products .list_description', minimum: 3
+    assert_select '.list_actions' do |elements|
+      elements.each do |element|
+        assert_select element, "a", 3
+      end
+    end
   end
 
   test "should get new" do

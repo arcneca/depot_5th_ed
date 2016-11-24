@@ -28,7 +28,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
   img {
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     width: 192px;
   }
@@ -72,6 +72,11 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
           font-size: small;
         }
       }
+    }
+
+    p {
+      color: #bfb;
+      font-size: small;
     }
   }
 }
