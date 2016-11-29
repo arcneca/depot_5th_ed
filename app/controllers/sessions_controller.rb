@@ -5,7 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:name])
+    if User.count.zero?
+      user = User.new(name: params[:name],
+                      password_digest: BCrypt::Password.create(params[:password]))
+      user.save
+    else
+      user = User.find_by(name: params[:name])
+    end
+
     if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
       redirect_to admin_url
