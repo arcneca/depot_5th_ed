@@ -4,8 +4,12 @@ class StoreController < ApplicationController
   before_action :set_cart
 
   def index
-    @products = Product.order(:title)
-    @counter = increment_index_access_count
+    if params[:set_locale]
+      redirect_to store_index_url(locale: params[:set_locale])
+    else
+      @products = Product.order(:title)
+      @counter = increment_index_access_count
+    end
   end
 
   private
